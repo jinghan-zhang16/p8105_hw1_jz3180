@@ -47,7 +47,20 @@ In a second code chunk:
 * convert the logical vector to a factor and then convert the result to numeric, and multiply the random sample by the result
 
 ```{r}
-
 ```
 
 ## Problem 2
+
+```{r}
+  data("penguins", package = "palmerpenguins")
+```
+
+Write a short description of the penguins dataset (not the penguins_raw dataset) using inline R code, including:
+-----------------------------------------------------------------------
+* the data in this dataset, including names / values of important variables
+* the size of the dataset (using nrow and ncol)
+* the mean flipper length
+
+Make a scatterplot of flipper_length_mm (y) vs bill_length_mm (x); color points using the species variable (adding color = ... inside of aes in your ggplot code should help).
+
+Export your first scatterplot to your project directory using ggsave.
