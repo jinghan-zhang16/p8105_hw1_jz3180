@@ -85,3 +85,7 @@ ggplot(plot_penguins, aes(x = x, y = y, color = pull(penguins, species))) + geom
 
 
 Export your first scatterplot to your project directory using ggsave.
+```{r}
+  ggsave("plot_penguins.png")
+```
+
