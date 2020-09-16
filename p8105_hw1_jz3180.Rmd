@@ -70,8 +70,18 @@ Write a short description of the penguins dataset (not the penguins_raw dataset)
 * the size of the dataset (using nrow and ncol)
 * the mean flipper length
 
-The data in the penguins dataset is stored in a tibble, with `r nrow(penguins)` observations (rows) and `r ncol(penguins)` categories/variables (columns) for each observation.
+**The data in the penguins dataset is stored in a tibble, with `r nrow(penguins)` observations (rows) and `r ncol(penguins)` categories/variables (columns) for each observation. These variables specifically studied are `r colnames(penguins)`. The mean flipper length is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)` mm.**
 
 Make a scatterplot of flipper_length_mm (y) vs bill_length_mm (x); color points using the species variable (adding color = ... inside of aes in your ggplot code should help).
+
+```{r plot_penguins}
+  plot_penguins = tibble(
+  x = pull(penguins, bill_length_mm),
+  y = pull(penguins, flipper_length_mm)
+)
+
+ggplot(plot_penguins, aes(x = x, y = y, color = pull(penguins, species))) + geom_point()
+```
+
 
 Export your first scatterplot to your project directory using ggsave.
