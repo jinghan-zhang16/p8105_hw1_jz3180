@@ -70,22 +70,17 @@ Write a short description of the penguins dataset (not the penguins_raw dataset)
 * the size of the dataset (using nrow and ncol)
 * the mean flipper length
 
-**The data in the penguins dataset is stored in a tibble, with `r nrow(penguins)` observations (rows) and `r ncol(penguins)` categories/variables (columns) for each observation. These variables specifically studied are `r colnames(penguins)`. The mean flipper length is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)` mm.**
+**The data in the penguins dataset is stored in a tibble, with `r nrow(penguins)` observations (rows) and `r ncol(penguins)` categories/variables (columns). The study ranges from the year `r min(pull(penguins, year))` to `r max(pull(penguins, year))`. The variables included in the dataset are `r colnames(penguins)`. Excluding missing data, there are `r sum(penguins$"sex" == "male", na.rm = TRUE)` male penguins and `r sum(penguins$"sex" == "female", na.rm = TRUE)` female penguins. The species of penguins are `r levels(pull(penguins, species))`. There are `r sum(penguins$"species" == "Adelie")` Adelie penguins, `r sum(penguins$"species" == "Chinstrap")` Chinstrap penguins, and `r sum(penguins$"species" == "Gentoo")` Gentoo penguins. The islands that they reside are `r levels(pull(penguins, island))`. `r sum(penguins$"island" == "Torgersen")` penguins live on Torgersen, `r sum(penguins$"island" == "Dream")` penguins live on Dream, and `r sum(penguins$"island" == "Biscoe")` penguins live on Biscoe. In terms of other characteristics, the mean flipper length is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)` mm and the mean body mass is `r mean(pull(penguins, body_mass_g), na.rm = TRUE)` g.**
 
 Make a scatterplot of flipper_length_mm (y) vs bill_length_mm (x); color points using the species variable (adding color = ... inside of aes in your ggplot code should help).
 
 ```{r plot_penguins}
-  plot_penguins = tibble(
-  x = pull(penguins, bill_length_mm),
-  y = pull(penguins, flipper_length_mm)
-)
-
-ggplot(plot_penguins, aes(x = x, y = y, color = pull(penguins, species))) + geom_point()
+  ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +   geom_point()
 ```
 
 
 Export your first scatterplot to your project directory using ggsave.
 ```{r}
-  ggsave("plot_penguins.png")
+  ggsave("plot_penguins.pdf")
 ```
 
